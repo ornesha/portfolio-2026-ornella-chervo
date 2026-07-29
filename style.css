@@ -1,0 +1,343 @@
+:root {
+    --bg-color: #Fdfbf7;
+    --text-color: #1a1a1a;
+    --accent-folder: #8ecae6;
+    --glass-bg: rgba(255, 255, 255, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --dock-item-size: 55px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--text-color);
+    overflow: hidden;
+    height: 100vh; width: 100vw;
+}
+
+#desktop {
+    position: relative;
+    width: 100%; height: 100%;
+    background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
+    background-size: 40px 40px; 
+}
+
+.intro-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 0;
+    pointer-events: none;
+    user-select: none;
+    width: 100%;
+}
+.intro-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 6.5rem;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 10px;
+    color: #222;
+}
+.intro-text p {
+    font-size: 1.1rem; opacity: 0.6; letter-spacing: 3px; text-transform: uppercase; font-weight: 500;
+}
+
+.draggable {
+    position: absolute;
+    cursor: grab;
+    transition: transform 0.1s linear, box-shadow 0.2s ease;
+    z-index: 1;
+}
+.draggable:active { cursor: grabbing; transform: scale(1.05); z-index: 100; }
+
+.folder { width: 120px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+
+.folder-icon {
+    width: 85px; height: 65px;
+    background: var(--accent-folder);
+    border-radius: 4px 8px 8px 8px;
+    position: relative; margin-bottom: 12px;
+    box-shadow: 5px 5px 15px rgba(29, 13, 129, 0.08);
+    transition: transform 0.2s ease;
+    filter: brightness(1.02);
+    overflow: hidden;
+}
+
+
+.preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    
+    opacity: 1; /* Totalmente visible */
+    mix-blend-mode: normal; /* Sin mezcla de colores */
+    
+    border: 2px solid rgba(255,255,255,0.3); 
+    border-radius: 4px 8px 8px 8px; /* Misma forma que la carpeta */
+    box-sizing: border-box;
+    
+    transition: opacity 0.5s ease;
+}
+
+.folder-icon::before {
+    content: ''; position: absolute; top: -10px; left: 0;
+    width: 40%; height: 12px; background: inherit;
+    border-radius: 6px 6px 0 0; filter: brightness(0.9);
+    z-index: -1;
+}
+
+.folder:hover .folder-icon { transform: translateY(-5px) scale(1.02); box-shadow: 5px 10px 20px rgba(0,0,0,0.12); }
+.folder p {
+    font-size: 0.85rem; font-weight: 500; color: #444;
+    background: rgba(255,255,255,0.6); padding: 4px 8px;
+    border-radius: 6px; backdrop-filter: blur(2px);
+    white-space: normal; line-height: 1.2; max-width: 130px;
+}
+
+.dock-container {
+    position: fixed; bottom: 30px; left: 50%;
+    transform: translateX(-50%); z-index: 1000;
+}
+.dock {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 18px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px; border: 1px solid var(--glass-border);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+.dock-item {
+    width: var(--dock-item-size); height: var(--dock-item-size);
+    border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    background: rgba(255,255,255,0.4); cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative; padding: 8px;
+}
+.dock-item img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
+.dock-item:hover { transform: scale(1.35) translateY(-15px); margin: 0 10px; background: rgba(255,255,255,0.9); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+.dock-item::after {
+    content: attr(data-tooltip); position: absolute; top: -45px;
+    background: rgba(20, 20, 20, 0.9); color: white;
+    font-size: 0.75rem; padding: 5px 10px; border-radius: 6px;
+    opacity: 0; pointer-events: none; transform: translateY(10px);
+    transition: all 0.2s; white-space: nowrap; font-weight: 500;
+}
+.dock-item:hover::after { opacity: 1; transform: translateY(0); }
+
+#modal-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(8px);
+    z-index: 2000; display: flex; justify-content: center; align-items: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+#modal-overlay.active { opacity: 1; pointer-events: all; }
+.hidden { display: none; }
+
+.mac-window {
+    width: 90%; max-width: 1100px;
+    height: 85vh; max-height: 800px;
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column; overflow: hidden;
+    transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#modal-overlay.active .mac-window { transform: scale(1); }
+
+.window-header {
+    height: 40px; background: #f0f0f0; border-bottom: 1px solid #dcdcdc;
+    display: flex; align-items: center; justify-content: center; position: relative; flex-shrink: 0;
+}
+.traffic-lights { position: absolute; left: 15px; display: flex; gap: 8px; }
+.light { width: 12px; height: 12px; border-radius: 50%; }
+.light.red { background: #ff5f56; cursor: pointer; }
+.light.red:hover { filter: brightness(0.8); }
+.light.yellow { background: #ffbd2e; }
+.light.green { background: #27c93f; }
+.window-title { font-size: 0.9rem; color: #666; font-weight: 500; }
+
+.window-content { flex: 1; overflow-y: auto; background: #fafafa; }
+
+.collage-container {
+    display: grid;
+    /* 2 Columnas fijas, pero flexibles */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+    padding: 40px;
+    /* CLAVE: Alinea al inicio para que la altura sea natural y no estire */
+    align-items: start; 
+    position: relative;
+}
+
+.collage-item {
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+    /* Asegura que no tenga altura forzada */
+    height: auto;
+    position: relative;
+}
+
+.text-item {
+    grid-column: 1 / -1; /* Ocupa todo el ancho */
+    background: #fff; 
+    padding: 30px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    
+    position: relative; /* Vital para que la foto se posicione respecto a la tarjeta */
+    overflow: visible;  /* Vital para que la foto pueda "salirse" de los bordes si quieres */
+}
+
+.collage-item img, 
+.collage-item video {
+    width: 100%;       /* Ocupa el 100% de su columna */
+    height: auto;      /* La altura se adapta a la imagen (NO SE CORTA) */
+    display: block;    
+    object-fit: contain; /* Muestra la imagen completa */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.collage-item:hover { transform: translateY(-3px); }
+
+.project-desc h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px; color: #222; }
+.tags { color: var(--accent-folder); font-weight: 600; font-size: 1rem; margin-bottom: 20px; display: block; text-transform: uppercase; letter-spacing: 1px; }
+.text-body { font-size: 1rem; line-height: 1.6; color: #555; white-space: pre-line; }
+
+@media (max-width: 768px) {
+    body { overflow-y: auto; height: auto; }
+    #desktop { display: flex; flex-direction: column; align-items: center; padding: 80px 0 140px; gap: 30px; }
+    .intro-text h1 { font-size: 4rem; }
+    .draggable { position: relative !important; transform: none !important; margin: 0; }
+    .folder { flex-direction: row; width: auto; background: rgba(255,255,255,0.6); padding: 5px 15px; border-radius: 12px; gap: 15px; text-align: left;}
+    .folder p { max-width: none; background: none; font-size: 1rem; }
+    .dock-container { width: 95%; bottom: 20px; }
+    .mac-window { height: 95vh; width: 95%; }
+    
+    .collage-container { grid-template-columns: 1fr; padding: 20px; gap: 20px;}
+}
+#lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.95); /* Fondo casi negro total */
+    z-index: 3000; /* Por encima de todo, incluso del modal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+#lightbox.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.lb-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img, #lightbox video {
+    max-width: 100%;
+    max-height: 90vh; /* Que no se salga de la pantalla */
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.lb-btn {
+    position: absolute;
+    color: white;
+    font-size: 3rem;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.2s;
+    padding: 20px;
+}
+
+.lb-btn:hover { color: var(--accent-folder); }
+
+#lb-close { top: 20px; right: 30px; font-size: 4rem; line-height: 0.5; }
+#lb-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+#lb-next { right: 20px; top: 50%; transform: translateY(-50%); }
+
+#lb-counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #aaa;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+}
+
+.hidden { display: none !important; opacity: 0; }
+
+#about-btn {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    
+    pointer-events: auto;  /* Reactiva el mouse para el título */
+    position: relative;    /* Asegura que quede por encima */
+    z-index: 10;           /* Lo trae al frente */
+}
+
+#about-btn:hover {
+    color: var(--accent-folder); 
+    transform: scale(1.05);      
+    text-shadow: 0 5px 15px rgba(142, 202, 230, 0.4);
+}
+
+
+.clipped-photo {
+    position: absolute;
+    top: -60px;   
+    right: 1px;   
+    width: 180px;  
+    z-index: 0;
+    transform: rotate(4deg); 
+    
+    @media (max-width: 768px) {
+        display: none;
+    }
+}
+
+.my-photo {
+    width: 100%;
+    display: block;
+    border: 12px solid white; 
+    border-bottom: 30px solid white; 
+    box-shadow: 5px 8px 15px rgba(0,0,0,0.25); 
+    border-radius: 2px;
+    background: white;
+}
+
+.paperclip {
+    position: absolute;
+    top: 10px;    
+    left: 60%;     
+    transform: translateX(-50%) rotate(-15deg); /* Rotación para realismo */
+    width: 50px;   
+    height: 90px;
+    color: #444;   
+    z-index: 20;   /* Importante: Z-index mayor que la foto (10) para estar ENCIMA */
+    filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.3)); /* Sombra del clip sobre la foto */
+}
