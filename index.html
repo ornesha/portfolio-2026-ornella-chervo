@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ornella | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="desktop">
+        <div class="intro-text">
+            
+            <h1 id="about-btn">Ornella.</h1> 
+            <p>Diseño Integral · Portfolio 2023-2026</p>
+        </div>
+
+        <div class="draggable folder" data-id="odisea" style="top: 8%; left: 8%;">
+            <div class="folder-icon" style="background-color: #d86303;"></div>
+            <p>El viaje de Ulises</p>
+        </div>
+
+        <div class="draggable folder" data-id="ui-system" style="top: 5%; left: 60%;">
+            <div class="folder-icon" style="background-color: #4fd9ff;"></div>
+            <p>Fungi</p>
+        </div>
+
+        <div class="draggable folder" data-id="juegodeplaza" style="top: 10%; right: 8%;">
+            <div class="folder-icon" style="background-color: #f0b5ff;"></div>
+            <p>Giróptico</p>
+        </div>
+
+        <div class="draggable folder" data-id="branding" style="top: 35%; right: 5%;">
+            <div class="folder-icon" style="background-color: #FFD54F;"></div>
+            <p>Instagram Hockey Di Tella</p>
+        </div>
+
+        <div class="draggable folder" data-id="editorial" style="bottom: 30%; right: 10%;">
+            <div class="folder-icon" style="background-color: #b9b9b9;"></div>
+            <p>Revista Kill Bill</p>
+        </div>
+
+        <div class="draggable folder" data-id="itinerario" style="bottom: 15%; right: 28%;">
+            <div class="folder-icon" style="background-color: #003cff;"></div>
+            <p>Metal y Piedra</p>
+        </div>
+
+        <div class="draggable folder" data-id="proyección" style="bottom: 15%; left: 28%;">
+            <div class="folder-icon" style="background-color: #000002;"></div>
+            <p>Oniria</p>
+        </div>
+
+        <div class="draggable folder" data-id="entornorealidadvirtual" style="bottom: 35%; left: 5%;">
+            <div class="folder-icon" style="background-color: #c40000;"></div>
+            <p>Squizo</p>
+        </div>
+
+        <div class="draggable folder" data-id="libro" style="top: 35%; left: 8%;">
+            <div class="folder-icon" style="background-color: #086811;"></div>
+            <p>El viaje de Totoro</p>
+        </div>
+
+        <div class="draggable folder" data-id="appdesign" style="top: 10%; left: 30%;">
+            <div class="folder-icon" style="background-color: #9d0fc0;"></div>
+            <p>Sync</p>
+        </div>
+<!-- Nuevas carpetas -->
+        <div class="draggable folder" data-id="deartentonine" style="top: 25%; right: 25%;">
+            <div class="folder-icon" style="background-color: #0a014b;"></div>
+            <p>Deartentonine</p>
+        </div>
+
+        <div class="draggable folder" data-id="caprichismo" style="bottom: 45%; right: 20%;">
+            <div class="folder-icon" style="background-color: #e91e79;"></div>
+            <p>Caprichismo</p>
+        </div>
+
+        <div class="draggable folder" data-id="fastfashion" style="bottom: 45%; left: 20%;">
+            <div class="folder-icon" style="background-color: #1aff00;"></div>
+            <p>Fast Fashion</p>
+        </div>
+
+
+
+    </div>
+
+    <div class="dock-container">
+        <div class="dock">
+            <div class="dock-item" data-tooltip="Illustrator"><img src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Adobe_Illustrator_CC_icon.svg" alt="Ai"></div>
+            <div class="dock-item" data-tooltip="Photoshop"><img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Adobe_Photoshop_CC_icon.svg" alt="Ps"></div>
+            <div class="dock-item" data-tooltip="After Effects"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Adobe_After_Effects_CC_icon.svg" alt="Ae"></div>
+            <div class="dock-item" data-tooltip="Figma"><img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg" alt="Figma"></div>
+            <div class="dock-item" data-tooltip="Blender"><img src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Blender_logo_no_text.svg" alt="Blender"></div>
+            <!-- Icono de Reaper con escala aumentada -->
+            <div class="dock-item" data-tooltip="Reaper"><img src="assets/reaper.png" alt="Reaper" style="transform: scale(1.6);"></div>
+            
+            <!-- Icono de Resolume Arena con escala aumentada -->
+            <div class="dock-item" data-tooltip="Resolume Arena"><img src="assets/resolume.png" alt="Resolume Arena" style="transform: scale(1.2);"></div>
+        </div>
+    </div>
+
+    <div id="modal-overlay" class="hidden">
+        <div class="mac-window">
+            <div class="window-header">
+                <div class="traffic-lights">
+                    <span class="light red" id="close-btn"></span>
+                    <span class="light yellow"></span>
+                    <span class="light green"></span>
+                </div>
+                <span class="window-title" id="modal-title">Proyecto</span>
+            </div>
+            
+            <div class="window-content">
+                <div class="collage-container" id="collage-display">
+                    <div class="collage-item text-item">
+                        <div class="project-desc">
+                            <h2 id="modal-heading">Título</h2>
+                            <p class="tags" id="modal-tags">#Tags</p>
+                            <div class="text-body" id="modal-text">Desc...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="hidden">
+        <span id="lb-close" class="lb-btn">&times;</span>
+        <span id="lb-prev" class="lb-btn">❮</span>
+        <span id="lb-next" class="lb-btn">❯</span>
+        
+        <div class="lb-content">
+            <img id="lb-img" src="" alt="Zoom">
+            <video id="lb-video" controls style="display:none;"></video>
+            <div id="lightbox" class="hidden">
+        <span id="lb-close" class="lb-btn">&times;</span>
+        <span id="lb-prev" class="lb-btn">❮</span>
+        <span id="lb-next" class="lb-btn">❯</span>
+        
+        <div class="lb-content">
+            <img id="lb-img" src="" alt="Zoom">
+            <video id="lb-video" controls style="display:none;"></video>
+            
+            <iframe id="lb-youtube" width="800" height="450" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="display:none;"></iframe>
+
+        </div>
+        
+        <span id="lb-counter">1 / 1</span>
+    </div>
+        </div>
+        
+        <span id="lb-counter">1 / 1</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
