@@ -341,3 +341,77 @@ body {
     z-index: 20;   /* Importante: Z-index mayor que la foto (10) para estar ENCIMA */
     filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.3)); /* Sombra del clip sobre la foto */
 }
+
+#boton-conectar {
+  position: fixed; /* Mantiene el botón en la misma posición en la pantalla al hacer scroll */
+  bottom: 20px; /* Distancia desde la parte inferior de la pantalla */
+  right: 20px; /* Distancia desde el lado derecho de la pantalla */
+  padding: 10px 20px; /* Relleno interior del botón */
+  background-color: #e4405f; /* Color de fondo (puedes cambiarlo al color que quieras) */
+  color: white; /* Color del texto y el icono */
+  border: none; /* Elimina el borde predeterminado */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  font-family: Arial, sans-serif; /* Tipo de letra */
+  font-size: 16px; /* Tamaño de la fuente */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
+}
+
+/* Estilo para el hover (cuando pasas el ratón por encima) */
+#boton-conectar:hover {
+  background-color: #d83b56; /* Cambia el color de fondo */
+}
+
+/* Estilo para el icono */
+#boton-conectar i {
+  margin-left: 10px; /* Espacio entre el texto y el icono */
+}
+
+/* --- Estilos del Botón Avioncito --- */
+#btn-avioncito {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #0057ff; /* Azul de tu web, podés cambiarlo a #000 u otro */
+    color: white;
+    border-radius: 50px; /* Lo hace completamente redondito */
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave para que flote */
+    transition: all 0.4s ease; /* Hace que la animación sea fluida */
+    overflow: hidden;
+    z-index: 1000; /* Asegura que quede siempre por encima de todo */
+}
+
+/* El ícono del avión */
+#btn-avioncito i {
+    font-size: 24px;
+}
+
+/* El texto oculto por defecto */
+#btn-avioncito .texto-hover {
+    max-width: 0;
+    opacity: 0;
+    white-space: nowrap;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.4s ease;
+}
+
+/* Lo que pasa cuando pasás el mouse por encima (HOVER) */
+#btn-avioncito:hover {
+    padding: 18px 25px; /* Se estira un poco hacia los costados */
+    background-color: #d35400; /* Cambia al naranja que usaste antes, o poné el que quieras */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* El texto se revela en el hover */
+#btn-avioncito:hover .texto-hover {
+    max-width: 200px;
+    opacity: 1;
+    margin-left: 12px; /* Espacio entre el avión y el texto */
+}
