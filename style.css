@@ -342,30 +342,6 @@ body {
     filter: drop-shadow(2px 3px 2px rgba(0,0,0,0.3)); /* Sombra del clip sobre la foto */
 }
 
-#boton-conectar {
-  position: fixed; /* Mantiene el botón en la misma posición en la pantalla al hacer scroll */
-  bottom: 20px; /* Distancia desde la parte inferior de la pantalla */
-  right: 20px; /* Distancia desde el lado derecho de la pantalla */
-  padding: 10px 20px; /* Relleno interior del botón */
-  background-color: #e4405f; /* Color de fondo (puedes cambiarlo al color que quieras) */
-  color: white; /* Color del texto y el icono */
-  border: none; /* Elimina el borde predeterminado */
-  border-radius: 5px; /* Bordes redondeados */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  font-family: Arial, sans-serif; /* Tipo de letra */
-  font-size: 16px; /* Tamaño de la fuente */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidad */
-}
-
-/* Estilo para el hover (cuando pasas el ratón por encima) */
-#boton-conectar:hover {
-  background-color: #d83b56; /* Cambia el color de fondo */
-}
-
-/* Estilo para el icono */
-#boton-conectar i {
-  margin-left: 10px; /* Espacio entre el texto y el icono */
-}
 
 /* --- Estilos del Botón Avioncito --- */
 #btn-avioncito {

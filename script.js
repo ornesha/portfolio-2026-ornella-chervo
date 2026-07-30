@@ -483,12 +483,4 @@ initFolderPreviews();
 
 document.getElementById('about-btn').addEventListener('click', () => openModal('about'));
 
-const botonConectar = document.getElementById("boton-conectar");
-
-// Reemplaza "tu_nombre_de_usuario" con tu nombre de usuario de Instagram
-const urlInstagram = "https://www.instagram.com/tu_nombre_de_usuario/"; 
-
-botonConectar.addEventListener("click", function() {
-  window.open(urlInstagram, "_blank");
-});
 
