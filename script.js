@@ -48,9 +48,10 @@ const projectsData = {
             
         ]
     },
-    "ui-system": { 
+  "ui-system": { 
         title: "Fungi - Objeto no Identificado",
-        desc: "Diseño de un objeto que parezca un producto, pero que no tenga una función clara. Llevado a cabo utilizando diferentes materiales y proveedores.",
+        desc: `Diseño de un objeto que parezca un producto, pero que no tenga una función clara. Llevado a cabo utilizando diferentes materiales y proveedores.<br><br>
+        <iframe src="https://www.behance.net/embed/project/214722679?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
         tags: "#Diseño Objetual #Producto #3D #Materiales #Cerámica #Metal #Rhinoceros #maquetación",
         gallery: [
             { type: 'image', src: 'assets2/fungiportada.jpg' },
@@ -63,9 +64,10 @@ const projectsData = {
             { type: 'image', src: 'assets2/fungifoto6.jpg' }
         ]
     },
-    "juegodeplaza": { 
+   "juegodeplaza": { 
         title: "Giróptico",
-        desc: "Diseño y conceptualización de un juego infantil para el Parque de la Innovación en CABA.",
+        desc: `Diseño y conceptualización de un juego infantil para el Parque de la Innovación en CABA.<br><br>
+        <iframe src="https://www.behance.net/embed/project/214709287?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
         tags: "#Diseño Industrial #Modelado 3D #Infantil #Lúdico #Rhinoceros #Adobe Photoshop #Adobe Illustrator #Impresión 3D #maquetación",
         gallery: [
             { type: 'image', src: 'assets2/Giroptico.jpg' },
@@ -94,9 +96,10 @@ const projectsData = {
         ]
     },
 
-    "editorial": { 
+   "editorial": { 
         title: "Revista Kill Bill",
-        desc: "Diseño y maquetación experimental de una revista en base a la película de Tarantino, Kill Bill.",
+        desc: `Diseño y maquetación experimental de una revista en base a la película de Tarantino, Kill Bill.<br><br>
+        <iframe src="https://www.behance.net/embed/project/191218377?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
         tags: "#Editorial #Layout #black and white #Adobe Illustrator #Adobe Photoshop #impresión",
         gallery: [
             { type: 'image', src: 'assets2/kb0.jpg' },
@@ -176,16 +179,17 @@ const projectsData = {
             { type: 'image', src: 'assets/totoro36.jpg' }
         ]
     },
-    "appdesign": { 
+  "appdesign": { 
         title: "Sync",
-        desc: "Prototipado de aplicación que conecta artistas y oyentes según gustos, intereses y habilidades, priorizando la curaduría social por sobre los algoritmos tradicionales. SYNC propone una experiencia donde el descubrimiento, el feedback y la colaboración fortalecen la visibilidad y el sentido de pertenencia en la escena musical emergente.",
+        desc: `Prototipado de aplicación que conecta artistas y oyentes según gustos, intereses y habilidades, priorizando la curaduría social por sobre los algoritmos tradicionales. SYNC propone una experiencia donde el descubrimiento, el feedback y la colaboración fortalecen la visibilidad y el sentido de pertenencia en la escena musical emergente.<br><br>
+        <iframe src="https://www.behance.net/embed/project/240534167?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
         tags: "#Prototipo #App #UXUI #Figma #Investigación De Usuario #Música #Social",
         gallery: [
             { type: 'image', src: 'assets/syncportada.png' },
             { type: 'youtube', src: 'https://www.youtube.com/embed/SN-v0qFvL3c' }
         ]
     },
- // No olvides agregar la coma al final del bloque "appdesign" de arriba
+ 
     "deartentonine": {
         title: "Deartentonine",
         desc: `Trabajo de V-Jaying en vivo.<br><br>
@@ -196,7 +200,7 @@ const projectsData = {
             { type: 'youtube', src: 'https://www.youtube.com/embed/cvB-dFk5r-s' }
         ]
     },
-    "caprichismo": {
+  "caprichismo": {
         title: "Caprichismo",
         desc: `El Caprichismo es una forma de pensar, de sentir, una excusa para expresarse, llegando a resultados interesantes, y cuestionables.<br>
         Encaprichate, probá, experimentá y escuchá tus impulsos,<br>
@@ -206,10 +210,10 @@ const projectsData = {
         Lo que la sociedad censura, lo incorrecto,<br>
         es lo que vale la pena.<br>
         Los caprichos nos hacen felices.<br><br>
+        👉 <a href="https://ornesha.github.io/tp/" target="_blank" style="color: #d35400; font-weight: bold; text-decoration: underline; font-size: 1.1em;">Visitar Página Web</a><br><br>
         <iframe src="https://www.behance.net/embed/project/253094435?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
         tags: "#Branding #Sistema de Identidad #Estilo de Vida #Expresate",
         gallery: [
-            
             { type: 'image', src: 'assets/caprichismo5.png' },
             { type: 'image', src: 'assets/caprichismo6.png' },
             { type: 'image', src: 'assets/caprichismo7.png' },
