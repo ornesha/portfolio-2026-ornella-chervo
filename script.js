@@ -212,7 +212,7 @@ const projectsData = {
         Los caprichos nos hacen felices.<br><br>
         👉 <a href="https://ornesha.github.io/tp/" target="_blank" style="color: #d35400; font-weight: bold; text-decoration: underline; font-size: 1.1em;">Visitar Página Web</a><br><br>
         <iframe src="https://www.behance.net/embed/project/253094435?ilo0=1" height="316" width="100%" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin" style="border-radius: 8px; border: none;"></iframe>`,
-        tags: "#Branding #Sistema de Identidad #Estilo de Vida #Expresate",
+        tags: "#Branding #Sistema de Identidad #Estilo de Vida #VibeCoding #Expresate",
         gallery: [
             { type: 'image', src: 'assets/caprichismo5.png' },
             { type: 'image', src: 'assets/caprichismo6.png' },
@@ -491,3 +491,4 @@ const urlInstagram = "https://www.instagram.com/tu_nombre_de_usuario/";
 botonConectar.addEventListener("click", function() {
   window.open(urlInstagram, "_blank");
 });
+
