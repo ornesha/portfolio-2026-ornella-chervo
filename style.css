@@ -220,15 +220,70 @@ body {
 
 @media (max-width: 768px) {
     body { overflow-y: auto; height: auto; }
-    #desktop { display: flex; flex-direction: column; align-items: center; padding: 80px 0 140px; gap: 30px; }
-    .intro-text h1 { font-size: 4rem; }
-    .draggable { position: relative !important; transform: none !important; margin: 0; }
-    .folder { flex-direction: row; width: auto; background: rgba(255,255,255,0.6); padding: 5px 15px; border-radius: 12px; gap: 15px; text-align: left;}
-    .folder p { max-width: none; background: none; font-size: 1rem; }
+    
+    /* 1. Armamos una grilla de 3 columnas para ordenar las carpetas */
+    #desktop { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 25px 10px; /* Espacio entre filas y columnas */
+        padding: 40px 10px 140px; /* El 140px abajo evita que el dock tape carpetas */
+        align-content: start;
+        justify-items: center;
+        height: auto; 
+        min-height: 100vh;
+    }
+
+    /* 2. Hacemos que el logo ocupe todo el ancho arriba de todo */
+    .intro-text { 
+        grid-column: 1 / -1; 
+        position: relative; 
+        transform: none; 
+        top: 0; left: 0; 
+        margin-bottom: 20px;
+    }
+    
+    .intro-text img#about-btn { max-width: 250px; width: 90%; }
+    .intro-text p { font-size: 0.85rem; }
+
+    /* 3. Forzamos a que las carpetas ignoren las posiciones de la compu para que no se superpongan */
+    .draggable { 
+        position: relative !important; 
+        transform: none !important; 
+        margin: 0; 
+        top: auto !important; 
+        left: auto !important; 
+        right: auto !important; 
+        bottom: auto !important;
+    }
+
+    /* 4. Le sacamos la "caja blurreada" y ponemos el ícono arriba del texto */
+    .folder { 
+        flex-direction: column; 
+        width: 100%; 
+        background: transparent; /* Acá eliminamos la caja gris/blanca */
+        padding: 0; 
+        border-radius: 0; 
+        gap: 6px; 
+        text-align: center;
+    }
+    
+    /* 5. Achicamos un pelín los íconos para que entren bien 3 por fila */
+    .folder-icon { 
+        width: 70px; 
+        height: 52px; 
+        margin-bottom: 0;
+    }
+
+    .folder p { 
+        max-width: 100%; 
+        font-size: 0.7rem; 
+        padding: 3px 5px;
+    }
+
     .dock-container { width: 95%; bottom: 20px; }
     .mac-window { height: 95vh; width: 95%; }
-    
     .collage-container { grid-template-columns: 1fr; padding: 20px; gap: 20px;}
+    .clipped-photo { display: none; } /* Ocultamos la foto tuya con clip en el celular para que no rompa la caja */
 }
 #lightbox {
     position: fixed;
