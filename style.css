@@ -449,3 +449,19 @@ body {
     margin-left: 12px; /* Espacio entre el avión y el texto */
 }
 
+/* --- SEO: el logo como título principal, sin cambiar el diseño --- */
+.intro-text h1.logo-title {
+    font-size: inherit;
+    line-height: normal;
+    margin: 0;
+}
+
+/* --- SEO: texto que lee Google pero no se ve en pantalla --- */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}

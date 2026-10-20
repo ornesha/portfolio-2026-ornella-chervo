@@ -1,4 +1,3 @@
-
 const projectsData = {
     
     "about": {
@@ -314,6 +313,7 @@ function renderCollage(data) {
             } else {
                 mediaEl = document.createElement('img');
                 mediaEl.src = item.src;
+                mediaEl.alt = `${data.title} – imagen ${index + 1}`; // SEO: descripción de la imagen
                 mediaEl.onerror = function() { this.style.display = 'none'; };
             }
             
@@ -474,6 +474,7 @@ function initFolderPreviews() {
             
             if (images.length > 0) {
                 previewImg.src = images[0].src; 
+                previewImg.alt = data.title; // SEO: descripción de la portada
                 iconContainer.appendChild(previewImg);
             }
         }
@@ -482,5 +483,3 @@ function initFolderPreviews() {
 initFolderPreviews();
 
 document.getElementById('about-btn').addEventListener('click', () => openModal('about'));
-
-
